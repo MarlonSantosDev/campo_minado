@@ -19,6 +19,7 @@ class CampoMinado extends StatelessWidget {
               color: Colors.white,
             ),
             onPressed: () {
+              controller.startGame();
             },
           )
         ],
@@ -29,21 +30,35 @@ class CampoMinado extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.zero,
           color: Colors.white,
-          width: MediaQuery.of(context).size.width,
+          //width: MediaQuery.of(context).size.width,
           child: Observer(
             builder: (_) =>
               Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text("Campos sem bombas: ${controller.campos_sem_bombas}"),
+                      Text("Campos explorado: ${controller.campos_descoberto}"),
+                      Text("Campos com bombas: ${controller.campos_com_bombas}"),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+
                   for (var linha in controller.matriz)
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         for (var coluna in linha)
-                          coluna.getCampo()
-                        ],
-                      )
+                          coluna.getCampo
+                      ],
+                    ),
                 ],
               ),
           ),

@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-         mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Observer(
             builder: (_) =>
@@ -59,9 +59,18 @@ class _HomeState extends State<Home> {
             height: 30,
           ),
           OutlinedButton.icon(
-            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CampoMinado(
-              controller: controller
-            )),),
+            onPressed: () {
+
+              controller.startGame();
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CampoMinado(
+                    controller: controller
+                  )
+                ),
+              );
+            },
             icon: const Icon(Icons.gamepad_outlined),
             label: const Text('Iniciar Game'),
           ),
