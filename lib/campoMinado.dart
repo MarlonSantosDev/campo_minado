@@ -48,7 +48,7 @@ class CampoMinado extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 20,
                   ),
 
                   for (var linha in controller.matriz)
